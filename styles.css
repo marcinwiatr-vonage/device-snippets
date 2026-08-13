@@ -357,39 +357,39 @@ pre[class*="language-"] {
 }
 
 .token.comment {
-    color: #a0aec0;
+    color: #9ca3af;
 }
 
 .token.string {
-    color: #9ae6b4;
-}
-
-.token.number {
-    color: #fbd38d;
-}
-
-.token.keyword {
-    color: #90cdf4;
-}
-
-.token.tag {
-    color: #fbb6ce;
-}
-
-.token.attr-name {
-    color: #fbb6ce;
-}
-
-.token.attr-value {
-    color: #9ae6b4;
-}
-
-.token.punctuation {
     color: #e2e8f0;
 }
 
+.token.number {
+    color: #e2e8f0;
+}
+
+.token.keyword {
+    color: #e2e8f0;
+}
+
+.token.tag {
+    color: #e2e8f0;
+}
+
+.token.attr-name {
+    color: #cbd5e0;
+}
+
+.token.attr-value {
+    color: #e2e8f0;
+}
+
+.token.punctuation {
+    color: #cbd5e0;
+}
+
 .token.operator {
-    color: #90cdf4;
+    color: #e2e8f0;
 }
 
 /* Footer */

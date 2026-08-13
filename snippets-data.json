@@ -1,0 +1,715 @@
+{
+  "snippets": [
+    {
+      "id": 1,
+      "title": "Description",
+      "category": "algo",
+      "description": "Config Code",
+      "code": "Notes",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "title": "(FSX port1) Loop Current Disconnect timer",
+      "category": "grandstream",
+      "description": "<P856>600</P856>",
+      "code": "600 milliseconds",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "title": "(FSX port1) Auto OffHook number",
+      "category": "grandstream",
+      "description": "<P71>(phone number)</P71>",
+      "code": "remove parathentheses",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "title": "Turn Off DND Completely",
+      "category": "polycom",
+      "description": "This will turn off the DND functionality in the phone",
+      "code": "<doNotDisturb\nfeature.enhancedFeatureKeys.enabled=\"1\"\nfeature.doNotDisturb.enable=\"0\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "title": "Turn Off Missed Calls",
+      "category": "polycom",
+      "description": "",
+      "code": "<callList\nfeature.enhancedFeatureKeys.enabled=\"1\"\nfeature.callList.enabled=\"1\"\nfeature.callListMissed.enabled=\"0\" \n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "title": "Turn Off Placed Calls",
+      "category": "polycom",
+      "description": "",
+      "code": "<callList\nfeature.enhancedFeatureKeys.enabled=\"1\"\nfeature.callList.enabled=\"1\"\nfeature.callListPlaced.enabled=\"0\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "title": "Turn Off Received Calls",
+      "category": "polycom",
+      "description": "",
+      "code": "<callList\nfeature.enhancedFeatureKeys.enabled=\"1\"\nfeature.callList.enabled=\"1\"\nfeature.callListReceived.enabled=\"0\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "title": "Record / Stop Record Calls",
+      "category": "polycom",
+      "description": "This will add a soft key to record a call and stop recording a call",
+      "code": "<record\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.action=\"$FDialpadStar$$FDialpad7$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.label=\"record\"\nsoftkey.1.precede=\"1\"\nsoftkey.1.use.active=\"1\"\nsoftkey.2.action=\"$FDialpadStar$$FDialpad8$\"\nsoftkey.2.enable=\"1\"\nsoftkey.2.label=\"stop record\"\nsoftkey.2.precede=\"1\"\nsoftkey.2.use.active=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "title": "Hotel Sign-In / Sign-Out",
+      "category": "polycom",
+      "description": "This will add a soft key to allow you to hotel into the phone and hotel out of a phone",
+      "code": "<hoteling\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.label=\"SignIn\"\nsoftkey.1.action=\"*40$Tinvite$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.idle=\"1\"\nsoftkey.2.label=\"SignOut\"\nsoftkey.2.action=\"*41$Tinvite$\"\nsoftkey.2.enable=\"1\"\nsoftkey.2.use.idle=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "title": "Queue Log-In / Log-Out\n*chnage <queueCode> with the code to login/logout of the queue",
+      "category": "polycom",
+      "description": "This will add a soft key to allow you to log into a specific call queue and log out of that call queue",
+      "code": "<queues\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.label=\"LogIn\"\nsoftkey.1.action=\"*90$Tinvite$$Cwc$$Cp6$<queueCode>$Tdtmf$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.idle=\"1\"\nsoftkey.1.precede=\"1\"\nsoftkey.2.label=\"LogOut\"\nsoftkey.2.action=\"*91$Tinvite$$Cwc$$Cp6$<queueCode>$Tdtmf$\"\nsoftkey.2.enable=\"1\"\nsoftkey.2.use.idle=\"1\"\nsoftkey.2.precede=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "title": "Visual Call Park",
+      "category": "polycom",
+      "description": "This will add five visual call park keys on your phone",
+      "code": "<visualCallPark\nattendant.resourceList.1.address=\"sip:*104*1@account-0\"\nattendant.resourceList.2.address=\"sip:*104*2@account-0\"\nattendant.resourceList.3.address=\"sip:*104*3@account-0\"\nattendant.resourceList.4.address=\"sip:*104*4@account-0\"\nattendant.resourceList.5.address=\"sip:*104*5@account-0\"\nattendant.resourceList.1.label=\"Park 1\"\nattendant.resourceList.2.label=\"Park 2\"\nattendant.resourceList.3.label=\"Park 3\"\nattendant.resourceList.4.label=\"Park 4\"\nattendant.resourceList.5.label=\"Park 5\"\nattendant.resourceList.1.type=\"automata\"\nattendant.resourceList.2.type=\"automata\"\nattendant.resourceList.3.type=\"automata\"\nattendant.resourceList.4.type=\"automata\"\nattendant.resourceList.5.type=\"automata\"\n/>",
+      "tags": [],
+      "notes": "Doesn&#39;t work With BLF or SLA\nMake sure you set call action to blind for VCP"
+    },
+    {
+      "id": 12,
+      "title": "Speed Dial Line Key on Phone",
+      "category": "polycom",
+      "description": "This will add five speed dial keys on your phone",
+      "code": "<speedDial\nattendant.resourceList.1.address=\"<number>\"\nattendant.resourceList.2.address=\"<number>\"\nattendant.resourceList.3.address=\"<number>\"\nattendant.resourceList.4.address=\"<number>\"\nattendant.resourceList.5.address=\"<number>\"\nattendant.resourceList.1.label=\"<label>\"\nattendant.resourceList.2.label=\"<label>\"\nattendant.resourceList.3.label=\"<label>\"\nattendant.resourceList.4.label=\"<label>\"\nattendant.resourceList.5.label=\"<label>\"\nattendant.resourceList.1.type=\"automata\"\nattendant.resourceList.2.type=\"automata\"\nattendant.resourceList.3.type=\"automata\"\nattendant.resourceList.4.type=\"automata\"\nattendant.resourceList.5.type=\"automata\"\n/>",
+      "tags": [],
+      "notes": "Doesn&#39;t work With BLF or SLA"
+    },
+    {
+      "id": 13,
+      "title": "Speed Dial Soft Key on Phone",
+      "category": "polycom",
+      "description": "will put speed dial key on first softkey",
+      "code": "< feature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.label=\"[label]\"\nsoftkey.1.action=\"[phone number]$Tinvite$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.idle=\"1\"\nsoftkey.1.use.active=\"1\"\nsoftkey.1.precede=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "title": "Dial By Name Directory",
+      "category": "polycom",
+      "description": "",
+      "code": "<dialByNameDirectory\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.label=\"Directory\"\nsoftkey.1.action=\"*102$Tinvite$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.idle=\"1\"\nsoftkey.1.precede=\"1\"\nsoftkey.feature.directories=\"0\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "title": "Transfer to voicemail active softkey",
+      "category": "polycom",
+      "description": "",
+      "code": "<xfer2Vmail\ncall.defaultTransferType= \"blind\"\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.6.label=\"VMail\"\nsoftkey.6.action=\"$FTransfer$$Cpause1$$FDialpadStar$$FDialpadStar$\"\nsoftkey.6.enable=\"1\"\nsoftkey.6.use.active=\"1\"\nsoftkey.6.precede=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "title": "set a background image from host site",
+      "category": "polycom",
+      "description": "",
+      "code": "<backgroundLogo\nbg.color.selection=\"2,1\"\nbg.color.bm.1.name=\"<URL of image>\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "title": "Turn off Forward Button",
+      "category": "polycom",
+      "description": "",
+      "code": "<forward\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.feature.forward=\"0\"\n/>",
+      "tags": [],
+      "notes": "< feature.forward.enable=\"0\" />\nthe disable the feature all together."
+    },
+    {
+      "id": 18,
+      "title": "Call Park / Retrieve",
+      "category": "polycom",
+      "description": "",
+      "code": "<parkRetrieve\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.label=\"Park\"\nsoftkey.1.action=\"$Ftransfer$*103$Tinvite$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.active=\"1\"\nsoftkey.2.label=\"Retrieve\"\nsoftkey.2.action=\"*104$Tinvite$\"\nsoftkey.2.enable=\"1\"\nsoftkey.2.use.idle=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "title": "Call Pickup",
+      "category": "polycom",
+      "description": "",
+      "code": "<callPickup\nfeature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.label=\"Pickup\"\nsoftkey.1.action=\"*97$Tinvite$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.idle=\"1\"\nsoftkey.1.use.dialtone=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "title": "Paging Soft Key",
+      "category": "polycom",
+      "description": "",
+      "code": "< softkey.1.label=\"Page\"\nsoftkey.1.action=\"(extension number)$Tinvite$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.idle=\"1\"\nsoftkey.1.use.dialtone=\"1\"\nsoftkey.1.precede=\"1\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "title": "Change Line Label\n# = line number",
+      "category": "polycom",
+      "description": "",
+      "code": "<label\nreg.#.label=“label”\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "title": "Auto OffHook\nChange <Number> to the phone number or extension you want to auto dial",
+      "category": "polycom",
+      "description": "",
+      "code": "<autoOffHook\nfeature.enhancedFeatureKeys.enabled=“1”\ncall.autoOffHook.1.enabled=“1\"\ncall.autoOffHook.1.contact=“<Number>”\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "title": "Add second line non iceberg from portal",
+      "category": "polycom",
+      "description": "",
+      "code": "<line2\nreg.2.address=\"<SIP ID>\"\nreg.2.auth.userId=\"<SIP ID>\"\nreg.2.displayName=\"<Label>\"\nreg.2.label=\"<Label>\"\nreg.2.auth.password=\"<SIP password>\"\nreg.2.server.1.address=\"a<account number>.ac1.vbspbx.com\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "title": "Push To Talk (PTT)",
+      "category": "polycom",
+      "description": "",
+      "code": "<pttMode\nptt ptt.address=\"224.0.1.116\"\nptt.volume=\"-20\"\nptt.channel.1.allowReceive=\"1\"\nptt.channel.1.allowTransmit=\"1\"\nptt.channel.1.available=\"1\"\nptt.channel.1.label=\"PTT\"\nptt.channel.1.subscribed=\"1\"\nptt.pttMode.enable=\"1\"\n/>",
+      "tags": [],
+      "notes": "You can use up to 23 different channels. Any phone subscribed to the channel will be part of any PTT conversations. PTT will stay active for 10 seconds if you do not end the PTT."
+    },
+    {
+      "id": 25,
+      "title": "Call Waiting Tone",
+      "category": "polycom",
+      "description": "Set the tone for call waiting including make it silent",
+      "code": "<callWaiting\ncall.callWaiting.ring=\"<action>\"\n/>",
+      "tags": [],
+      "notes": "Actions you can set are the following:\nsilent - no audible sound\nbeep - beep sound\nring - ringing sound"
+    },
+    {
+      "id": 26,
+      "title": "Ring Timeout",
+      "category": "polycom",
+      "description": "Set the length of time before the phone stops ringing. This is defaulted to 60 seconds",
+      "code": "<ringTimeout\ncall.offeringTimeOut=\"<time in seconds>\"\n/>",
+      "tags": [],
+      "notes": "Set time in seconds. 60 is default.\nThis will reboot the phone when added"
+    },
+    {
+      "id": 27,
+      "title": "Enable polycom trio screen capture",
+      "category": "polycom",
+      "description": "",
+      "code": "<screenCapture\nup.screenCapture.enabled=\"1\"\nup.screensapture.allowed=\"1\"\n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "title": "Set default transfer type to blind",
+      "category": "polycom",
+      "description": "",
+      "code": "< call.defaultTransferType=\"Blind\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "title": "One touch voicemail softkey",
+      "category": "polycom",
+      "description": "",
+      "code": "< feature.enhancedFeatureKeys.enabled=\"1\"\nsoftkey.1.label=\"Voicemail\"\nsoftkey.1.action=\"*101$Tinvite$$Cwc$$Cp3$<extension number>#<PIN>#$Tdtmf$\"\nsoftkey.1.enable=\"1\"\nsoftkey.1.use.idle=\"1\"\nsoftkey.1.precede=\"4\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "title": "One touch voicemail linekey",
+      "category": "polycom",
+      "description": "",
+      "code": "< feature.EFKLineKey.enabled=\"1\" efk.efklist.1.action.string=\"*99$Tinvite$$Cwc$,(PIN)#$Tdtmf$\" \nefk.efklist.1.mname=\"Voicemail\" feature.enhancedFeatureKeys.enabled=\"1\" \nefk.efklist.1.status=\"1\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "title": "Ribbon Caller ID",
+      "category": "polycom",
+      "description": "",
+      "code": "< up.LineViewCallStatus.enabled=\"0\"\n up.osdIncomingCall.enabled=\"1\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "title": "Change dialplan to last 9 seconds",
+      "category": "polycom",
+      "description": "",
+      "code": "dialplan.digitmap.timeOut=\"9|9|9|9|9|9|9\"\ndialplan.1.digitmap=\"[2-9]xxxxxxxxx|[1]xxxxxxxxxx|200|911|0T|[1-8]xx.T|*xxxx|011x.T\"\ndialplan.1.digitmap.timeout=\"9|9|9|9|9|9|9\"",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "title": "Hide SIP Adress on trio",
+      "category": "polycom",
+      "description": "",
+      "code": "< homeScreen.labelType=\"None\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "title": "Auto Answer, no ring, no mic mute",
+      "category": "polycom",
+      "description": "",
+      "code": "< call.autoAnswer.SIP=\"1\" \ncall.autoAnswer.ringClass=\"visual\"\ncall.autoAnswer.micMute=\"0\" \n/>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "title": "Less touch Conference softkey",
+      "category": "polycom",
+      "description": "",
+      "code": "< feature.EFKLineKey.enabled=\"1\"\nfeature.enhancedFeatureKeys.enabled=\"1\"\nefk.efklist.3.mname=\"CONFERENCE\"\nefk.efklist.3.status=\"1\"\nefk.efklist.3.action.string=\"FConference$P1N4$$Tinvite$$Cwc$$FConference$\"\nefk.efkprompt.1.status=\"1\"\nefk.efkprompt.1.label=\"Extension: \"\nefk.efkprompt.1.userfeedback=\"visible\"\nefk.efkprompt.1.type=\"numeric\"\nsoftkey.3.label=\"CONFERENCE\"\nsoftkey.3.action=\"!CONFERENCE\"\nsoftkey.3.enable=\"1\"\nsoftkey.3.precede=\"1\"\nsoftkey.3.use.hold=\"1\"\nsoftkey.3.use.active=\"1\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "title": "Disable ring for auto-answered calls",
+      "category": "polycom",
+      "description": "",
+      "code": "< alertInfo\nvoIpProt.SIP.alertInfo.1.value=\"Auto Answer\"\nvoIpProt.SIP.alertInfo.1.class=\"3\" />",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "title": "setting static VLAN ID",
+      "category": "polycom",
+      "description": "",
+      "code": "< device.net.vlanID.set = \"1\"\ndevice.net.vlanId = \"100\"\ndevice.net.lldpEnabled = \"0\"\ndevice.net.cdpEnabled = \"0\" />",
+      "tags": [],
+      "notes": "The VLAN ID set in the example is 100"
+    },
+    {
+      "id": 38,
+      "title": "Call queue log in and out idle softkeys 2 and 3 \n*change <queueCode> with the code to login/logout of the queue",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1 \nprogramablekey.2.label = Login \nprogramablekey.2.line = 0\nprogramablekey.2.type = 73 \nprogramablekey.2.value = *90$Cwc$$Cp6$<queuecode>$Tdtmf$ \nprogramablekey.3.label = Logout \nprogramablekey.3.line = 0\nprogramablekey.3.type = 73 \nprogramablekey.3.value = *91$Cwc$$Cp6$<queuecode>$Tdtmf$",
+      "tags": [],
+      "notes": "feature.enhanced_dss_key enable has to be enabled to use any macros in call configs this code replaces the Directory and DND button in the 4 softkeys <queue code> has to be placed with the individual queue code."
+    },
+    {
+      "id": 39,
+      "title": "Change Line Label\n# = line number",
+      "category": "yealink",
+      "description": "",
+      "code": "linekey.#.label = <label>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "title": "Call Pickup",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1 \nprogramablekey.2.label = Pickup \nprogramablekey.2.line = 0\nprogramablekey.2.type = 73 \nprogramablekey.2.value = *97",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "title": "Dial By Name Directory",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1 \nprogramablekey.2.label = Pickup \nprogramablekey.2.line = 0\nprogramablekey.2.type = 73 \nprogramablekey.2.value = *102",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "title": "Hotline",
+      "category": "yealink",
+      "description": "",
+      "code": "features.hotline_delay = 0\nfeatures.hotline_number = <phone number>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "title": "Call Flip Softkey",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1 \nprogramablekey.2.label = Pickup \nprogramablekey.2.line = 0\nprogramablekey.2.type = 73 \nprogramablekey.2.value = *44",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "title": "Record / Stop Record Calls",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1\nlinekey.5.label = start record\nlinekey.5.line = 0\nlinekey.5.type = 73\nlinekey.5.value = *7$Tdtmf$\nlinekey.6.label = stop record\nlinekey.6.line = 0\nlinekey.6.type = 73\nlinekey.6.value = *8$Tdtmf$",
+      "tags": [],
+      "notes": "this is for stop and start recording button as line keys"
+    },
+    {
+      "id": 45,
+      "title": "Speed dials",
+      "category": "yealink",
+      "description": "",
+      "code": "linekey.3.label = <label>\nlinekey.3.line = 1\nlinekey.3.type = 13\nlinekey.3.value = <phone number>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "title": "disable missed call log",
+      "category": "yealink",
+      "description": "",
+      "code": "account.1.missed_calllog = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "title": "changes the name in the upper left hand corner of the phone",
+      "category": "yealink",
+      "description": "",
+      "code": "account.1.label = <name>",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "title": "show the call tags in the history",
+      "category": "yealink",
+      "description": "",
+      "code": "features.call_log_show_num = 2",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "title": "disable call forwarding",
+      "category": "yealink",
+      "description": "",
+      "code": "features.fwd.allow = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "title": "one button voicemail",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1\nprogramablekey.2.label =ExtXXXXVM\nprogramablekey.2.line = 0\nprogramablekey.2.type = 73\nprogramablekey.2.value = *101$Cwc$$Cp3$<EXTENSION>#<PIN>#$Tdtmf$",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "title": "Manual VCP starting on line 3",
+      "category": "yealink",
+      "description": "",
+      "code": "linekey.3.label = Park 1\nlinekey.3.line = 1\nlinekey.3.type = 10\nlinekey.3.value = *104*1\nlinekey.4.label = Park 2\nlinekey.4.line = 1\nlinekey.4.type = 10\nlinekey.4.value = *104*2\nlinekey.5.label = Park 3\nlinekey.5.line = 1\nlinekey.5.type = 10\nlinekey.5.value = *104*3\nlinekey.6.label = Park 4\nlinekey.6.line = 1\nlinekey.6.type = 10\nlinekey.6.value = *104*4\nlinekey.7.label = Park 5\nlinekey.7.line = 1\nlinekey.7.type = 10\nlinekey.7.value = *104*5\nlinekey.8.label = Park 6\nlinekey.8.line = 1\nlinekey.8.type = 10\nlinekey.8.value = *104*6\nlinekey.9.label = Park 7\nlinekey.9.line = 1\nlinekey.9.type = 10\nlinekey.9.value = *104*7",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "title": "Disable call waiting tone",
+      "category": "yealink",
+      "description": "",
+      "code": "call_waiting.tone = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "title": "Remove picture display with incoming calls.",
+      "category": "yealink",
+      "description": "",
+      "code": "phone_setting.contact_photo_display.enable = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "title": "Line key 6 transfer phone to voicemail with extension selection prompt",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1\nlinekey.6.label = <label>\nlinekey.6.line = 0\nlinekey.6.type = 73\nlinekey.6.value = $KSoftKey1$**$Pextension&C10&N$$Tinvite$$Cwc$$KSoftKey1$",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 55,
+      "title": "used for assigning handsets to line in cordless yealinks",
+      "category": "yealink",
+      "description": "Handset one rings from line one and two\nwith default line out as one\nhandset two rings only from line two",
+      "code": "handset.1.dial_out_default_line = 1\nhandset.1.dial_out_lines = 1,2\nhandset.1.incoming_lines = 1,2\nhandset.2.dial_out_default_line = 2\nhandset.2.dial_out_lines = 2\nhandset.2.incoming_lines = 2",
+      "tags": [],
+      "notes": "numbers can be changed to correspond with handset numbers and lines\nif the is no value such as you don&#39;t want the phone to receive or send on any line you can put in the value of %EMPTY%\nnumber values need to be separated by commas"
+    },
+    {
+      "id": 56,
+      "title": "make parameter ID visible after doing a long press of the volume up button",
+      "category": "yealink",
+      "description": "",
+      "code": "edk.id_mode.enable = 1",
+      "tags": [],
+      "notes": "enabling this on a phone makes finding the parameter for macro writing easier"
+    },
+    {
+      "id": 57,
+      "title": "Directory button on line key 6 that goes directly to the remote phone book",
+      "category": "yealink",
+      "description": "not for touchscreen phones",
+      "code": "features.enhanced_dss_keys.enable = 1\nlinekey.6.label = Directory\nlinekey.6.line = 0\nlinekey.6.type = 73\nlinekey.6.value = $Idirectory_type_remote$$KSoftKey4$",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 58,
+      "title": "Directory button to replace the default one that goes directly to the remote phone book.",
+      "category": "yealink",
+      "description": "not for touchscreen phones",
+      "code": "features.enhanced_dss_keys.enable = 1 \nprogramablekey.2.label = Directory\nprogramablekey.2.line = 0\nprogramablekey.2.type = 73 \nprogramablekey.2.value = $Idirectory_type_remote$$KSoftKey4$",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "title": "Disable DND",
+      "category": "yealink",
+      "description": "",
+      "code": "features.dnd.allow = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "title": "Set Transport on Line 1 to TCP",
+      "category": "yealink",
+      "description": "",
+      "code": "account.1.sip_server.1.transport_type = 1",
+      "tags": [],
+      "notes": "Turn of SRTP and TLS first"
+    },
+    {
+      "id": 61,
+      "title": "Backgrounds for T54, T57",
+      "category": "yealink",
+      "description": "",
+      "code": "wallpaper_upload.url = (URL of Image)\nphone_setting.backgrounds = Config:(name of image)",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "title": "change the transparency of DSS keys to be opaque",
+      "category": "yealink",
+      "description": "",
+      "code": "phone_setting.idle_dsskey_and_title.transparency = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "title": "disable missed call light from flashing",
+      "category": "yealink",
+      "description": "",
+      "code": "phone_setting.missed_call_power_led_flash.enable = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "title": "Add 33 to a directory entry after a search.",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1\nlinekey.6.label = Directory\nlinekey.6.line = 0\nlinekey.6.type = 73\nlinekey.6.value = $KSpeaker$$KDialPad3$$KDialPad3$$Idirectory_type_remote$",
+      "tags": [],
+      "notes": "Intent is to be used with Multi-site directory."
+    },
+    {
+      "id": 65,
+      "title": "DSS key label length extended",
+      "category": "yealink",
+      "description": "",
+      "code": "features.config_dsskey_length = 1",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "title": "Disables missed call popup without disabling log",
+      "category": "yealink",
+      "description": "",
+      "code": "features.missed_call_popup.enable = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 67,
+      "title": "Move BLFs to the sides cars without having to fill up the base",
+      "category": "yealink",
+      "description": "",
+      "code": "phone_setting.blf_list_sequence_type = 3",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "title": "Blank line keys",
+      "category": "yealink",
+      "description": "",
+      "code": "linekey.1.line = 0\nlinekey.2.line = 0\nlinekey.3.line = 0\nlinekey.4.line = 0\nlinekey.5.line = 0\nlinekey.6.line = 0\nlinekey.7.line = 0\nlinekey.8.line = 0\nlinekey.9.line = 0\nlinekey.10.line = 0\nlinekey.11.line = 0\nlinekey.12.line = 0\nlinekey.13.line = 0\nlinekey.14.line = 0\nlinekey.15.line = 0\nlinekey.16.line = 0\nlinekey.17.line = 0\nlinekey.18.line = 0\nlinekey.19.line = 0\nlinekey.20.line = 0\nlinekey.21.line = 0\nlinekey.22.line = 0\nlinekey.23.line = 0\nlinekey.24.line = 0\nlinekey.25.line = 0\nlinekey.26.line = 0\nlinekey.27.line = 0\nlinekey.28.line = 0\nlinekey.29.line = 0\nlinekey.1.type = 0\nlinekey.2.type = 0\nlinekey.3.type = 0\nlinekey.4.type = 0\nlinekey.5.type = 0\nlinekey.6.type = 0\nlinekey.7.type = 0\nlinekey.8.type = 0\nlinekey.9.type = 0\nlinekey.10.type = 0\nlinekey.11.type = 0\nlinekey.12.type = 0\nlinekey.13.type = 0\nlinekey.14.type = 0\nlinekey.15.type = 0\nlinekey.16.type = 0\nlinekey.17.type = 0\nlinekey.18.type = 0\nlinekey.19.type = 0\nlinekey.20.type = 0\nlinekey.21.type = 0\nlinekey.22.type = 0\nlinekey.23.type = 0\nlinekey.24.type = 0\nlinekey.25.type = 0\nlinekey.26.type = 0\nlinekey.27.type = 0\nlinekey.28.type = 0\nlinekey.29.type = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 69,
+      "title": "How to format speedials on an expansion module",
+      "category": "yealink",
+      "description": "",
+      "code": "expansion_module.1.key.1.label = Label 1\nexpansion_module.1.key.1.line = 1\nexpansion_module.1.key.1.type = 13\nexpansion_module.1.key.1.value = 5556625555\nexpansion_module.1.key.2.label = Label 2\nexpansion_module.1.key.2.line = 1\nexpansion_module.1.key.2.type = 13\nexpansion_module.1.key.2.value = 18001234567",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 70,
+      "title": "change BLF LED",
+      "category": "yealink",
+      "description": "",
+      "code": "features.blf_led_mode = 3",
+      "tags": [],
+      "notes": "there are 4 options but i recommend 3"
+    },
+    {
+      "id": 71,
+      "title": "removes the alert that a transfer was complete",
+      "category": "yealink",
+      "description": "",
+      "code": "features.transfer_complete.prompt.enable = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 72,
+      "title": "turn off the power LED at all times even when power saving.",
+      "category": "yealink",
+      "description": "",
+      "code": "phone_setting.common_power_led_enable = 0\nphone_setting.ring_power_led_flash_enable = 0\nphone_setting.mail_power_led_flash_enable = 0\nphone_setting.mute_power_led_flash_enable = 0\nphone_setting.hold_and_held_power_led_flash_enable = 0\nphone_setting.talk_and_dial_power_led_enable = 0\nphone_setting.missed_call_power_led_flash.enable = 0\nfeatures.power_saving.power_led_flash.on_time = 0\nfeatures.power_saving.power_led_flash.off_time = 100",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 73,
+      "title": "Disable voicemail subscribtions for other lines on the phone\nregistrations 2-5",
+      "category": "yealink",
+      "description": "",
+      "code": "account.2.display_mwi.enable = 0\naccount.3.display_mwi.enable = 0\naccount.4.display_mwi.enable = 0\naccount.5.display_mwi.enable = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 74,
+      "title": "conference existing lines\none touch conferencing",
+      "category": "yealink",
+      "description": "",
+      "code": "features.conference.with_previous_call.enable = 1\nfeatures.local_conf.combine_with_one_press.enable = 1",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 75,
+      "title": "hybrid mode for teams phones",
+      "category": "yealink",
+      "description": "",
+      "code": "features.hybid_mode.enable = 1",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 76,
+      "title": "Turn on BLF Directed Call Pickup",
+      "category": "yealink",
+      "description": "",
+      "code": "account.1.blf_list_code = *97",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 77,
+      "title": "Turn off power to the USB port",
+      "category": "yealink",
+      "description": "",
+      "code": "static.usb.power.enable = 0",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 78,
+      "title": "Dynamic CID Macro",
+      "category": "yealink",
+      "description": "",
+      "code": "features.enhanced_dss_keys.enable = 1\nlinekey.3.label = <label>\nlinekey.3.line = 0\nlinekey.3.type = 73\nlinekey.3.value = $KSoftKey1$<DCID>**$P<label>&C10&N$$Tinvite$\nlinekey.4.label = <label>\nlinekey.4.line = 0\nlinekey.4.type = 73\nlinekey.4.value = $KSoftKey1$<DCID>**$P<label>&C10&N$$Tinvite$",
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": 79,
+      "title": "Add in interdigit timeout",
+      "category": "yealink",
+      "description": "",
+      "code": "phone_setting.dialnow_delay = x",
+      "tags": [],
+      "notes": "value for \"x\" can be 0-14"
+    }
+  ]
+}

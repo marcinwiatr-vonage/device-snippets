@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Configuration Snippets</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-code"></i> Device Configuration Snippets</h1>
+            <p>Configuration code snippets for IP phones and devices</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-buttons" id="navButtons">
+                <!-- dynamically populated -->
+            </div>
+            <button class="nav-btn" id="addCategoryBtn" title="Add Device Category">
+                <i class="fas fa-plus"></i> Add Device
+            </button>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search snippets..." class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <div class="toolbar">
+                <button id="addSnippetBtn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Request New Snippet
+                </button>
+                <div class="view-options">
+                    <button id="gridViewBtn" class="view-btn active" title="Grid View">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button id="listViewBtn" class="view-btn" title="List View">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="snippetsContainer" class="snippets-container grid-view">
+                <!-- Snippets will be dynamically loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Snippet Modal -->
+    <div id="snippetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Request New Snippet</h2>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="snippetForm">
+                    <div class="form-group">
+                        <label for="snippetTitle">Title:</label>
+                        <input type="text" id="snippetTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="snippetCategory">Category:</label>
+                        <input list="categorySuggestions" id="snippetCategory" placeholder="e.g., polycom, yealink" required />
+                        <datalist id="categorySuggestions">
+                            <!-- dynamically populated -->
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="snippetDescription">Description:</label>
+                        <textarea id="snippetDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="snippetCode">Code:</label>
+                        <textarea id="snippetCode" rows="10" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="snippetTags">Tags (comma-separated):</label>
+                        <input type="text" id="snippetTags" placeholder="e.g., configuration, setup, custom">
+                    </div>
+                    <div class="form-group">
+                        <label for="snippetNotes">Notes (optional):</label>
+                        <textarea id="snippetNotes" rows="2" placeholder="Additional notes or warnings..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Snippet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

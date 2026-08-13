@@ -236,13 +236,13 @@ body {
 }
 
 .snippet-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -260,9 +260,10 @@ body {
 }
 
 .snippet-card:hover {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(0, 0, 0, 0.5);
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1), 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .snippet-card:hover::before {
@@ -275,12 +276,12 @@ body {
     align-items: flex-start;
     margin-bottom: 1rem;
 }
-
 .snippet-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #2d3748;
+    color: #f7fafc;
     margin-bottom: 0.5rem;
+}   margin-bottom: 0.5rem;
 }
 
 .snippet-category {
@@ -300,23 +301,23 @@ body {
 .snippet-category.algo { background: #d69e2e; }
 
 .snippet-description {
-    color: #4a5568;
+    color: #e2e8f0;
     margin-bottom: 1rem;
     font-size: 0.95rem;
 }
 
 .snippet-notes {
-    background: #fff5f5;
+    background: rgba(252, 129, 129, 0.15);
     border-left: 4px solid #fc8181;
     padding: 0.75rem;
     margin-bottom: 1rem;
     border-radius: 4px;
     font-size: 0.9rem;
-    color: #742a2a;
+    color: #feb2b2;
 }
 
 .snippet-notes strong {
-    color: #9b2c2c;
+    color: #fc8181;
 }
 
 .snippet-code {

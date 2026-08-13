@@ -23,7 +23,7 @@ body {
 
 /* Header */
 .header {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
     padding: 3rem 0;
     text-align: center;
@@ -49,7 +49,7 @@ body {
 
 /* Navigation */
 .nav {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
     padding: 1.25rem 0;
     position: sticky;
@@ -74,7 +74,7 @@ body {
 }
 
 .nav-btn {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border: 1.5px solid rgba(255, 255, 255, 0.1);
     color: #e2e8f0;
     padding: 0.75rem 1.5rem;
@@ -116,7 +116,7 @@ body {
     font-size: 1rem;
     outline: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     color: #e2e8f0;
 }
 
@@ -238,7 +238,7 @@ body {
 }
 
 .snippet-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 2rem;
@@ -262,7 +262,7 @@ body {
 }
 
 .snippet-card:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.3);
     border-color: rgba(255, 255, 255, 0.2);
@@ -322,7 +322,7 @@ body {
 }
 
 .snippet-code {
-    background: rgba(120, 120, 120, 0.25);
+    background: rgba(120, 120, 120, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 8px;
     overflow: hidden;
@@ -349,7 +349,7 @@ body {
 /* Keep Prism blocks consistent with our settings */
 pre[class*="language-"] {
     margin: 0 !important;
-    background: rgba(120, 120, 120, 0.25) !important;
+    background: rgba(120, 120, 120, 0.15) !important;
     padding: 0.75rem !important;
     font-size: 0.8rem !important;
     line-height: 1.5 !important;

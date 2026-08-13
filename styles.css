@@ -49,14 +49,14 @@ body {
 
 /* Navigation */
 .nav {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     padding: 1.25rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav .container {
@@ -74,9 +74,9 @@ body {
 }
 
 .nav-btn {
-    background: #f8f9fc;
-    border: 1.5px solid #e8eaf2;
-    color: #4a5568;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
     padding: 0.75rem 1.5rem;
     border-radius: 12px;
     cursor: pointer;
@@ -90,16 +90,16 @@ body {
 }
 
 .nav-btn:hover {
-    background: #f1f3f9;
-    border-color: #d0d5dd;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .nav-btn.active {
-    background: #2d3748;
+    background: rgba(255, 255, 255, 0.15);
     color: white;
-    border-color: #2d3748;
+    border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -111,18 +111,23 @@ body {
 .search-input {
     width: 100%;
     padding: 0.875rem 3rem 0.875rem 1.25rem;
-    border: 1.5px solid #e8eaf2;
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     font-size: 1rem;
     outline: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #f8f9fc;
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.search-input::placeholder {
+    color: #9ca3af;
 }
 
 .search-input:focus {
-    border-color: #4a5568;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(74, 85, 104, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
 }
 
 .search-icon {
@@ -233,11 +238,11 @@ body {
 }
 
 .snippet-card {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15), 0 10px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
@@ -257,9 +262,9 @@ body {
 }
 
 .snippet-card:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.08);
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.3);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -317,7 +322,7 @@ body {
 }
 
 .snippet-code {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(120, 120, 120, 0.25);
     backdrop-filter: blur(10px);
     border-radius: 8px;
     overflow: hidden;
@@ -332,23 +337,23 @@ body {
     overflow-x: auto;
     font-size: 0.8rem;
     line-height: 1.5;
-    color: #f8f9fa;
+    color: #f1f1f1;
 }
 
 .snippet-code code {
     font-family: 'Courier New', monospace;
     font-size: 0.8rem;
-    color: #f8f9fa;
+    color: #f1f1f1;
 }
 
 /* Keep Prism blocks consistent with our settings */
 pre[class*="language-"] {
     margin: 0 !important;
-    background: rgba(0, 0, 0, 0.6) !important;
+    background: rgba(120, 120, 120, 0.25) !important;
     padding: 0.75rem !important;
     font-size: 0.8rem !important;
     line-height: 1.5 !important;
-    color: #f8f9fa !important;
+    color: #f1f1f1 !important;
 }
 
 .token.comment {

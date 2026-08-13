@@ -1,0 +1,40 @@
+name: Validate Snippets JSON
+
+on:
+  push:
+    paths:
+      - 'snippets-data.json'
+  pull_request:
+    paths:
+      - 'snippets-data.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        run: |
+          node -e "
+            const fs = require('fs');
+            try {
+              const data = JSON.parse(fs.readFileSync('snippets-data.json', 'utf8'));
+              if (!Array.isArray(data.snippets)) {
+                throw new Error('snippets-data.json must have a top-level \"snippets\" array');
+              }
+              const requiredFields = ['id', 'title', 'category', 'code'];
+              data.snippets.forEach((s, i) => {
+                requiredFields.forEach(field => {
+                  if (s[field] === undefined || s[field] === '') {
+                    throw new Error('Snippet at index ' + i + ' is missing required field: ' + field);
+                  }
+                });
+              });
+              console.log('✅ snippets-data.json is valid (' + data.snippets.length + ' snippets)');
+            } catch (err) {
+              console.error('❌ Validation failed: ' + err.message);
+              process.exit(1);
+            }
+          "

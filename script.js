@@ -49,19 +49,6 @@ class SnippetManager {
                 this.setActiveCategory(e.currentTarget.dataset.category);
             });
         });
-
-        // Add Device button handler
-        const addCategoryBtn = document.getElementById('addCategoryBtn');
-        if (addCategoryBtn) {
-            addCategoryBtn.onclick = () => {
-                const name = prompt('Enter new device category name:');
-                if (!name) return;
-                const category = name.trim().toLowerCase();
-                // Open modal to add a first snippet under this category
-                const modalData = { title: '', category, description: '', code: '', tags: [], notes: '' };
-                this.openModal(modalData);
-            };
-        }
     }
 
     populateCategoryDatalist() {

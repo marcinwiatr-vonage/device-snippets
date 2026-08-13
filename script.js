@@ -130,22 +130,6 @@ class SnippetManager {
                 this.copySnippet(id);
             });
         });
-
-        // Edit buttons
-        document.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = parseInt(e.target.closest('.edit-btn').dataset.id, 10);
-                this.editSnippet(id);
-            });
-        });
-
-        // Delete buttons
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = parseInt(e.target.closest('.delete-btn').dataset.id, 10);
-                this.deleteSnippet(id);
-            });
-        });
     }
 
     copySnippet(snippetId) {
@@ -311,12 +295,6 @@ class SnippetManager {
                     <div class="snippet-buttons">
                         <button class="snippet-btn copy-btn" title="Copy to clipboard" data-id="${snippet.id}">
                             <i class="fas fa-copy"></i>
-                        </button>
-                        <button class="snippet-btn edit-btn" title="Edit snippet" data-id="${snippet.id}">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="snippet-btn delete-btn" title="Delete snippet" data-id="${snippet.id}">
-                            <i class="fas fa-trash"></i>
                         </button>
                     </div>
                 </div>

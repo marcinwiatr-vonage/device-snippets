@@ -320,45 +320,50 @@ body {
 }
 
 .snippet-code {
-    background: #1a202c;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 1rem;
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .snippet-code pre {
     margin: 0;
-    padding: 0.75rem; /* slightly larger padding for readability */
+    padding: 0.75rem;
     overflow-x: auto;
-    font-size: 0.8rem; /* adjust to requested size */
-    line-height: 1.5; /* comfortable line height */
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #f8f9fa;
 }
 
 .snippet-code code {
     font-family: 'Courier New', monospace;
-    font-size: 0.8rem; /* match pre font size */
+    font-size: 0.8rem;
+    color: #f8f9fa;
 }
 
 /* Keep Prism blocks consistent with our settings */
 pre[class*="language-"] {
     margin: 0 !important;
-    background: #1a202c !important;
+    background: rgba(0, 0, 0, 0.6) !important;
     padding: 0.75rem !important;
     font-size: 0.8rem !important;
     line-height: 1.5 !important;
+    color: #f8f9fa !important;
 }
 
 .token.comment {
-    color: #718096;
+    color: #a0aec0;
 }
 
 .token.string {
-    color: #68d391;
+    color: #9ae6b4;
 }
 
 .token.number {
-    color: #f6ad55;
+    color: #fbd38d;
 }
 
 .token.keyword {
@@ -366,7 +371,7 @@ pre[class*="language-"] {
 }
 
 .token.tag {
-    color: #f687b3;
+    color: #fbb6ce;
 }
 
 .token.attr-name {
@@ -374,7 +379,15 @@ pre[class*="language-"] {
 }
 
 .token.attr-value {
-    color: #68d391;
+    color: #9ae6b4;
+}
+
+.token.punctuation {
+    color: #e2e8f0;
+}
+
+.token.operator {
+    color: #90cdf4;
 }
 
 /* Footer */

@@ -1,0 +1,103 @@
+name: Add Snippet From Issue
+
+# Triggered when a new issue is created. Runs the snippet processor on any
+# issue whose body/title looks like a snippet submission (has a "new-snippet"
+# label OR a Category/Code style body, which is how the Slack workflow
+# currently posts issues without labels). Issues that don't look like
+# snippet requests are ignored.
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: write
+
+jobs:
+  add-snippet:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'new-snippet') ||
+      contains(github.event.issue.body, 'Category:') ||
+      contains(github.event.issue.body, '### Category')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Use a PAT if you need commits to trigger other workflows/Pages
+          # builds; the default GITHUB_TOKEN works fine for a plain push.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Parse issue and update snippets-data.json
+        id: process
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          node .github/scripts/process-snippet-issue.js | tee output.log
+          echo "summary<<EOF" >> "$GITHUB_OUTPUT"
+          grep '^RESULT_JSON:' output.log | sed 's/^RESULT_JSON://' >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snippets-data.json
+          git commit -m "Add snippet from issue #${{ github.event.issue.number }}" || echo "No changes to commit"
+          git push
+
+      - name: Comment on issue
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '✅ Snippet added to `snippets-data.json` and published to the site automatically.'
+            });
+
+      - name: Close issue
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'completed'
+            });
+
+      - name: Comment on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '❌ Could not automatically process this snippet request. Please check that Title, Category, and Code are filled in correctly, and that Category is one of: polycom, yealink, cisco, grandstream, algo, other. A maintainer may need to add this manually.'
+            });
+
+      - name: Label issue as failed
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['needs-manual-review']
+            });

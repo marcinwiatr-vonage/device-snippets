@@ -5,6 +5,8 @@ class SnippetManager {
         this.currentView = 'grid';
         this.editingSnippetId = null;
         this.apiBaseUrl = 'http://localhost:3000/api';
+        this.contactEmail = 'marcin.wiatr@vonage.com';
+        this.githubRepo = 'marcinwiatr-vonage/device-snippets';
 
         this.initializeEventListeners();
         this.fetchSnippets();
@@ -95,11 +97,19 @@ class SnippetManager {
             this.closeModal();
         });
 
-        // Form submission
+        // Form submission (email)
         document.getElementById('snippetForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.saveSnippet();
         });
+
+        // GitHub issue submission
+        const githubBtn = document.getElementById('githubIssueBtn');
+        if (githubBtn) {
+            githubBtn.addEventListener('click', () => {
+                this.submitViaGithubIssue();
+            });
+        }
 
         // Close modal when clicking outside
         document.getElementById('snippetModal').addEventListener('click', (e) => {
@@ -172,8 +182,85 @@ class SnippetManager {
         this.editingSnippetId = null;
     }
 
+    getFormValues() {
+        return {
+            title: document.getElementById('snippetTitle').value.trim(),
+            category: document.getElementById('snippetCategory').value.trim(),
+            description: document.getElementById('snippetDescription').value.trim(),
+            code: document.getElementById('snippetCode').value.trim(),
+            tags: document.getElementById('snippetTags').value.trim(),
+            notes: document.getElementById('snippetNotes').value.trim()
+        };
+    }
+
+    validateFormValues(values) {
+        if (!values.title) {
+            this.showToast('Please provide a title', 'error');
+            return false;
+        }
+        if (!values.category) {
+            this.showToast('Please provide a category', 'error');
+            return false;
+        }
+        if (!values.code) {
+            this.showToast('Please provide the code snippet', 'error');
+            return false;
+        }
+        return true;
+    }
+
+    buildSnippetBody(values) {
+        return [
+            `Title: ${values.title}`,
+            `Category: ${values.category}`,
+            '',
+            'Description:',
+            values.description || '(none)',
+            '',
+            'Code:',
+            values.code,
+            '',
+            `Tags: ${values.tags || '(none)'}`,
+            '',
+            'Notes:',
+            values.notes || '(none)'
+        ].join('\n');
+    }
+
     async saveSnippet() {
-        alert('This is a read-only version. To request new snippets or changes, use the "Request New Snippet" button.');
+        const values = this.getFormValues();
+        if (!this.validateFormValues(values)) return;
+
+        const subject = `[Snippet] ${values.title}`;
+        const body = this.buildSnippetBody(values);
+
+        const mailtoUrl = `mailto:${this.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open the user's email client with a pre-filled message
+        window.location.href = mailtoUrl;
+
+        this.showToast('Opening your email client...', 'success');
+        this.closeModal();
+    }
+
+    submitViaGithubIssue() {
+        const values = this.getFormValues();
+        if (!this.validateFormValues(values)) return;
+
+        const params = new URLSearchParams({
+            template: 'new-snippet.yml',
+            title: `[Snippet] ${values.title}`,
+            category: values.category,
+            description: values.description,
+            code: values.code,
+            tags: values.tags,
+            notes: values.notes
+        });
+
+        const issueUrl = `https://github.com/${this.githubRepo}/issues/new?${params.toString()}`;
+        window.open(issueUrl, '_blank', 'noopener');
+
+        this.showToast('Opening GitHub issue form...', 'success');
         this.closeModal();
     }
 

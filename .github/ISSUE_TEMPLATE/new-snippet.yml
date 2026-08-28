@@ -1,0 +1,66 @@
+name: Add New Snippet
+description: Submit a new device configuration snippet to be added to the site
+title: "[Snippet] "
+labels: ["new-snippet"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Short descriptive title for the snippet
+      placeholder: e.g. Turn Off DND Completely
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Device brand/category
+      options:
+        - polycom
+        - yealink
+        - cisco
+        - grandstream
+        - algo
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Brief description of what this snippet does
+      placeholder: This will turn off the DND functionality in the phone
+    validations:
+      required: false
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code
+      description: The configuration code snippet
+      render: text
+      placeholder: |
+        feature.enhancedFeatureKeys.enabled="1"
+        feature.doNotDisturb.enable="0"
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated tags (optional)
+      placeholder: dnd, softkey, disable
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any additional notes or warnings (optional)
+    validations:
+      required: false

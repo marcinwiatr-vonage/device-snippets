@@ -3,7 +3,7 @@ class SnippetManager {
         this.snippets = [];
         this.currentCategory = 'all';
         this.currentView = 'grid';
-        this.slackChannelUrl = 'https://vonage.enterprise.slack.com/archives/C0BT98L62SF';
+        this.slackChannelUrl = 'https://vonage.enterprise.slack.com/archives/C0BUBBARRMW';
 
         this.initializeEventListeners();
         this.fetchSnippets();

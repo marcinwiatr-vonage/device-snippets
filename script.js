@@ -3,10 +3,6 @@ class SnippetManager {
         this.snippets = [];
         this.currentCategory = 'all';
         this.currentView = 'grid';
-        this.editingSnippetId = null;
-        this.apiBaseUrl = 'http://localhost:3000/api';
-        this.contactEmail = 'marcin.wiatr@vonage.com';
-        this.githubRepo = 'marcinwiatr-vonage/device-snippets';
         this.slackChannelUrl = 'https://vonage.enterprise.slack.com/archives/C0BT98L62SF';
 
         this.initializeEventListeners();
@@ -84,48 +80,6 @@ class SnippetManager {
         document.getElementById('listViewBtn').addEventListener('click', () => {
             this.setView('list');
         });
-
-        // Modal controls
-        document.getElementById('addSnippetBtn').addEventListener('click', () => {
-            this.openModal();
-        });
-
-        document.getElementById('closeModal').addEventListener('click', () => {
-            this.closeModal();
-        });
-
-        document.getElementById('cancelBtn').addEventListener('click', () => {
-            this.closeModal();
-        });
-
-        // Form submission (email)
-        document.getElementById('snippetForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.saveSnippet();
-        });
-
-        // GitHub issue submission
-        const githubBtn = document.getElementById('githubIssueBtn');
-        if (githubBtn) {
-            githubBtn.addEventListener('click', () => {
-                this.submitViaGithubIssue();
-            });
-        }
-
-        // Slack submission
-        const slackBtn = document.getElementById('slackBtn');
-        if (slackBtn) {
-            slackBtn.addEventListener('click', () => {
-                this.submitViaSlack();
-            });
-        }
-
-        // Close modal when clicking outside
-        document.getElementById('snippetModal').addEventListener('click', (e) => {
-            if (e.target.id === 'snippetModal') {
-                this.closeModal();
-            }
-        });
     }
 
     addSnippetEventListeners() {
@@ -146,158 +100,6 @@ class SnippetManager {
             }).catch(() => {
                 this.showToast('Failed to copy code', 'error');
             });
-        }
-    }
-
-    editSnippet(snippetId) {
-        const snippet = this.snippets.find(s => s.id === snippetId);
-        if (snippet) {
-            this.editingSnippetId = snippetId;
-            this.openModal(snippet);
-        }
-    }
-
-    async deleteSnippet(snippetId) {
-        alert('This is a read-only version. To request changes, use the "Request New Snippet" button.');
-    }
-
-    openModal(snippet = null) {
-        const modal = document.getElementById('snippetModal');
-        const form = document.getElementById('snippetForm');
-        const title = document.getElementById('modalTitle');
-
-        if (snippet) {
-            title.textContent = 'Edit Snippet';
-            document.getElementById('snippetTitle').value = snippet.title;
-            document.getElementById('snippetCategory').value = snippet.category;
-            document.getElementById('snippetDescription').value = snippet.description || '';
-            document.getElementById('snippetCode').value = snippet.code;
-            document.getElementById('snippetTags').value = snippet.tags.join(', ');
-            document.getElementById('snippetNotes').value = snippet.notes || '';
-        } else {
-            title.textContent = 'Add New Snippet';
-            form.reset();
-            this.editingSnippetId = null;
-        }
-
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    closeModal() {
-        const modal = document.getElementById('snippetModal');
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        this.editingSnippetId = null;
-    }
-
-    getFormValues() {
-        return {
-            title: document.getElementById('snippetTitle').value.trim(),
-            category: document.getElementById('snippetCategory').value.trim(),
-            description: document.getElementById('snippetDescription').value.trim(),
-            code: document.getElementById('snippetCode').value.trim(),
-            tags: document.getElementById('snippetTags').value.trim(),
-            notes: document.getElementById('snippetNotes').value.trim()
-        };
-    }
-
-    validateFormValues(values) {
-        if (!values.title) {
-            this.showToast('Please provide a title', 'error');
-            return false;
-        }
-        if (!values.category) {
-            this.showToast('Please provide a category', 'error');
-            return false;
-        }
-        if (!values.code) {
-            this.showToast('Please provide the code snippet', 'error');
-            return false;
-        }
-        return true;
-    }
-
-    buildSnippetBody(values) {
-        return [
-            `Title: ${values.title}`,
-            `Category: ${values.category}`,
-            '',
-            'Description:',
-            values.description || '(none)',
-            '',
-            'Code:',
-            values.code,
-            '',
-            `Tags: ${values.tags || '(none)'}`,
-            '',
-            'Notes:',
-            values.notes || '(none)'
-        ].join('\n');
-    }
-
-    async saveSnippet() {
-        const values = this.getFormValues();
-        if (!this.validateFormValues(values)) return;
-
-        const subject = `[Snippet] ${values.title}`;
-        const body = this.buildSnippetBody(values);
-
-        const mailtoUrl = `mailto:${this.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        // Open the user's email client with a pre-filled message
-        window.location.href = mailtoUrl;
-
-        this.showToast('Opening your email client...', 'success');
-        this.closeModal();
-    }
-
-    submitViaGithubIssue() {
-        const values = this.getFormValues();
-        if (!this.validateFormValues(values)) return;
-
-        const params = new URLSearchParams({
-            template: 'new-snippet.yml',
-            title: `[Snippet] ${values.title}`,
-            category: values.category,
-            description: values.description,
-            code: values.code,
-            tags: values.tags,
-            notes: values.notes
-        });
-
-        const issueUrl = `https://github.com/${this.githubRepo}/issues/new?${params.toString()}`;
-        window.open(issueUrl, '_blank', 'noopener');
-
-        this.showToast('Opening GitHub issue form...', 'success');
-        this.closeModal();
-    }
-
-    submitViaSlack() {
-        const values = this.getFormValues();
-        if (!this.validateFormValues(values)) return;
-
-        // Slack doesn't support pre-filling a message via a plain channel
-        // link, so we copy a ready-to-paste message to the clipboard and
-        // open the channel so the user can paste it into the Slack
-        // workflow/form there.
-        const message = this.buildSnippetBody(values);
-
-        const openChannel = () => {
-            window.open(this.slackChannelUrl, '_blank', 'noopener');
-            this.closeModal();
-        };
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(message).then(() => {
-                this.showToast('Snippet details copied! Paste them into the Slack workflow.', 'success');
-                openChannel();
-            }).catch(() => {
-                this.showToast('Opening Slack (copy failed, please fill the form manually)', 'error');
-                openChannel();
-            });
-        } else {
-            openChannel();
         }
     }
 
@@ -491,22 +293,6 @@ document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         document.getElementById('searchInput').focus();
-    }
-    
-    // Ctrl/Cmd + N to add new snippet
-    if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
-        e.preventDefault();
-        if (window.snippetManager) {
-            window.snippetManager.openModal();
-        }
-    }
-    
-    // Escape to close modal
-    if (e.key === 'Escape') {
-        const modal = document.getElementById('snippetModal');
-        if (modal.style.display === 'block' && window.snippetManager) {
-            window.snippetManager.closeModal();
-        }
     }
 });
 

@@ -710,6 +710,17 @@
       "code": "phone_setting.dialnow_delay = x",
       "tags": [],
       "notes": "value for \"x\" can be 0-14"
+    },
+    {
+      "id": 80,
+      "title": "Turn Off Placed Calls",
+      "category": "polycom",
+      "description": "Turn Off Placed Calls",
+      "code": "<callList\nfeature.enhancedFeatureKeys.enabled=\"1\"\nfeature.callList.enabled=\"1\"\nfeature.callListPlaced.enabled=\"0\"\n/>",
+      "tags": [
+        "none"
+      ],
+      "notes": "none"
     }
   ]
 }

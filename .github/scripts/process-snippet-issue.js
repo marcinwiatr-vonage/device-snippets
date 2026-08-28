@@ -64,7 +64,11 @@ function getSection(body, label) {
 
     value = stripFence(value).trim();
 
-    if (value === '_No response_' || value === '(none)') return '';
+    // Treat common "empty" placeholder values as blank, since Slack
+    // templates often fill unset optional fields with literal text like
+    // "none" or "n/a" instead of leaving them blank.
+    const EMPTY_VALUES = new Set(['_no response_', '(none)', 'none', 'n/a', 'na', '-']);
+    if (EMPTY_VALUES.has(value.toLowerCase())) return '';
     return value;
 }
 

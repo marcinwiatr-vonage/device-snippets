@@ -7,6 +7,7 @@ class SnippetManager {
         this.apiBaseUrl = 'http://localhost:3000/api';
         this.contactEmail = 'marcin.wiatr@vonage.com';
         this.githubRepo = 'marcinwiatr-vonage/device-snippets';
+        this.slackChannelUrl = 'https://vonage.enterprise.slack.com/archives/C0BT98L62SF';
 
         this.initializeEventListeners();
         this.fetchSnippets();
@@ -108,6 +109,14 @@ class SnippetManager {
         if (githubBtn) {
             githubBtn.addEventListener('click', () => {
                 this.submitViaGithubIssue();
+            });
+        }
+
+        // Slack submission
+        const slackBtn = document.getElementById('slackBtn');
+        if (slackBtn) {
+            slackBtn.addEventListener('click', () => {
+                this.submitViaSlack();
             });
         }
 
@@ -262,6 +271,34 @@ class SnippetManager {
 
         this.showToast('Opening GitHub issue form...', 'success');
         this.closeModal();
+    }
+
+    submitViaSlack() {
+        const values = this.getFormValues();
+        if (!this.validateFormValues(values)) return;
+
+        // Slack doesn't support pre-filling a message via a plain channel
+        // link, so we copy a ready-to-paste message to the clipboard and
+        // open the channel so the user can paste it into the Slack
+        // workflow/form there.
+        const message = this.buildSnippetBody(values);
+
+        const openChannel = () => {
+            window.open(this.slackChannelUrl, '_blank', 'noopener');
+            this.closeModal();
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(message).then(() => {
+                this.showToast('Snippet details copied! Paste them into the Slack workflow.', 'success');
+                openChannel();
+            }).catch(() => {
+                this.showToast('Opening Slack (copy failed, please fill the form manually)', 'error');
+                openChannel();
+            });
+        } else {
+            openChannel();
+        }
     }
 
     setActiveCategory(category) {

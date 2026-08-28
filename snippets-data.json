@@ -743,6 +743,17 @@
         "test tag 1"
       ],
       "notes": "test note 1"
+    },
+    {
+      "id": 83,
+      "title": "Universal dial-plan for Grandstream phones",
+      "category": "grandstream",
+      "description": "Use this universal dial-plan for Grandstream phones (not ATAs) provisioned outside US, when standard dial-plans pulled from Vonage config fail to dial the numbers",
+      "code": "{ x+ | \\+x+ | *x+ | *xx*x+ | x+*x+*x+*x+ | x+*x+*x+*x+#x+ }",
+      "tags": [
+        "Notes:"
+      ],
+      "notes": ""
     }
   ]
 }

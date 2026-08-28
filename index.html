@@ -88,16 +88,16 @@
                         <label for="snippetNotes">Notes (optional):</label>
                         <textarea id="snippetNotes" rows="2" placeholder="Additional notes or warnings..."></textarea>
                     </div>
-                    <p class="form-hint">Submitting will open your email client addressed to our team, or you can create a GitHub issue instead. You can also submit new snippets directly in Slack.</p>
+                    <p class="form-hint">Submit new snippets directly in Slack.</p>
                     <div class="form-actions">
                         <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
                         <button type="button" class="btn btn-secondary" id="slackBtn">
                             <i class="fab fa-slack"></i> Submit via Slack
                         </button>
-                        <button type="button" class="btn btn-secondary" id="githubIssueBtn">
+                        <button type="button" class="btn btn-secondary" id="githubIssueBtn" style="display: none;">
                             <i class="fab fa-github"></i> Create GitHub Issue
                         </button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="emailSubmitBtn" style="display: none;">
                             <i class="fas fa-envelope"></i> Send via Email
                         </button>
                     </div>

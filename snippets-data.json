@@ -754,6 +754,20 @@
         "Notes:"
       ],
       "notes": ""
+    },
+    {
+      "id": 84,
+      "title": "Tested",
+      "category": "yealink",
+      "description": "Enables remote syslog on Yealink devices, sending log messages to a UDP syslog server on port 514. Logging is set to level 6 (Informational), using server mode so all logs are forwarded externally rather than stored locally. The device's MAC address is prepended to each message for easy identification in the syslog server. Replace syslog.server with your actual syslog collector IP.\n\nstatic.syslog.enable 1 Syslog enabled static.syslog.server_port 514 Standard syslog port static.syslog.transport_type 0 UDP transport static.syslog.prepend_mac_address.enable 1 MAC address prepended to log entries syslog.server 10.0.0.1 Remote syslog server IP (replace as needed) syslog.mode 1 Server mode (remote logging) syslog.level 6 Informational (0 = Emergency → 6 = Info) syslog.format_type 1 Syslog message format type 1",
+      "code": "```syslog.format_type = 1\nstatic.syslog.server_port = 514\nstatic.syslog.transport_type = 0\nstatic.syslog.prepend_mac_address.enable = 1\nstatic.syslog.enable = 1\nsyslog.server = 10.0.0.1\nsyslog.mode = 1\nsyslog.level = 6```",
+      "tags": [
+        "Yealink",
+        "sys",
+        "log",
+        "pcap"
+      ],
+      "notes": ""
     }
   ]
 }
